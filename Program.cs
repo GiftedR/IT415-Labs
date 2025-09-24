@@ -8,68 +8,81 @@ internal class Program
 		int[] tenkarray = new int[10000];
 		int[] hundredkarray = new int[100000];
 
-		const int million = 1000000;
+		const long million = 1000000;
 
-		double onekconstanttime = 0;
-		double tenkconstanttime = 0;
-		double hundredkconstanttime = 0;
+		long onekconstanttime = 0;
+		long tenkconstanttime = 0;
+		long hundredkconstanttime = 0;
 
 		Stopwatch sw = new();
 
 		sw.Start();
 		FirstElement(onekarray);
 		sw.Stop();
-		onekconstanttime = sw.Elapsed.Nanoseconds / million;
+		onekconstanttime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"1k Constant Elapsed Time {onekconstanttime}ms");
 
 		sw.Restart();
 		FirstElement(tenkarray);
 		sw.Stop();
-		tenkconstanttime = sw.Elapsed.Nanoseconds / million;
+		tenkconstanttime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"10k Constant Elapsed Time {tenkconstanttime}ms");
 
 		sw.Restart();
 		FirstElement(hundredkarray);
 		sw.Stop();
-		hundredkconstanttime = sw.Elapsed.Nanoseconds / million;
+		hundredkconstanttime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"100k Constant Elapsed Time {hundredkconstanttime}ms");
 
-
-		double oneklineartime = 0;
-		double tenklineartime = 0;
-		double hundredklineartime = 0;
+		long oneklineartime = 0;
+		long tenklineartime = 0;
+		long hundredklineartime = 0;
 
 		sw.Start();
 		SumElements(onekarray);
 		sw.Stop();
-		oneklineartime = sw.Elapsed.Nanoseconds / million;
+		oneklineartime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"1k Linear Elapsed Time {oneklineartime}ms");
 
 		sw.Restart();
 		SumElements(tenkarray);
 		sw.Stop();
-		tenklineartime = sw.Elapsed.Nanoseconds / million;
+		tenklineartime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"10k Linear Elapsed Time {tenklineartime}ms");
 
 		sw.Restart();
 		SumElements(hundredkarray);
 		sw.Stop();
-		hundredklineartime = sw.Elapsed.Nanoseconds / million;
+		hundredklineartime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"100k Linear Elapsed Time {hundredklineartime}ms");
 
-
-		double onekquadratictime = 0;
-		double tenkquadratictime = 0;
-		double hundredkquadratictime = 0;
+		long onekquadratictime = 0;
+		long tenkquadratictime = 0;
+		long hundredkquadratictime = 0;
 
 		sw.Start();
 		CrossSearchElements(onekarray);
 		sw.Stop();
-		onekquadratictime = sw.Elapsed.Nanoseconds / million;
+		onekquadratictime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"1k Quadratic Elapsed Time {onekquadratictime}ms");
 
 		sw.Restart();
 		CrossSearchElements(tenkarray);
 		sw.Stop();
-		tenkquadratictime = sw.Elapsed.Nanoseconds / million;
+		tenkquadratictime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"10k Quadratic Elapsed Time {tenkquadratictime}ms");
 
 		sw.Restart();
 		CrossSearchElements(hundredkarray);
 		sw.Stop();
-		hundredkquadratictime = sw.Elapsed.Nanoseconds / million;
+		hundredkquadratictime = sw.ElapsedMilliseconds;
+		Console.WriteLine($"100k Quadratic Elapsed Time {hundredkquadratictime}ms");
+
+		Console.WriteLine($"| Method | n=1,000 | n=10,000 | n=100,000 |\n" +
+$"|--------|---------|----------|-----------|\n" +
+$"| O(1)   | {onekconstanttime}ms | {tenkconstanttime}ms | {hundredkconstanttime}ms |\n" +
+$"| O(n)   | {oneklineartime}ms | {tenklineartime}ms | {hundredklineartime}ms |\n" +
+$"| O(n²)  | {onekquadratictime}ms | {tenkquadratictime}ms | {hundredkquadratictime}ms |");
 	}
 
 	private static int FirstElement(int[] arr) => arr.First();
