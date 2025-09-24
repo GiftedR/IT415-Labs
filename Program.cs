@@ -8,81 +8,79 @@ internal class Program
 		int[] tenkarray = new int[10000];
 		int[] hundredkarray = new int[100000];
 
-		const long million = 1000000;
-
-		long onekconstanttime = 0;
-		long tenkconstanttime = 0;
-		long hundredkconstanttime = 0;
+		TimeSpan onekconstanttime = new();
+		TimeSpan tenkconstanttime = new();
+		TimeSpan hundredkconstanttime = new();
 
 		Stopwatch sw = new();
 
 		sw.Start();
 		FirstElement(onekarray);
 		sw.Stop();
-		onekconstanttime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"1k Constant Elapsed Time {onekconstanttime}ms");
+		onekconstanttime = sw.Elapsed;
+		Console.WriteLine($"1k Constant Elapsed Time {onekconstanttime}");
 
 		sw.Restart();
 		FirstElement(tenkarray);
 		sw.Stop();
-		tenkconstanttime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"10k Constant Elapsed Time {tenkconstanttime}ms");
+		tenkconstanttime = sw.Elapsed;
+		Console.WriteLine($"10k Constant Elapsed Time {tenkconstanttime}");
 
 		sw.Restart();
 		FirstElement(hundredkarray);
 		sw.Stop();
-		hundredkconstanttime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"100k Constant Elapsed Time {hundredkconstanttime}ms");
+		hundredkconstanttime = sw.Elapsed;
+		Console.WriteLine($"100k Constant Elapsed Time {hundredkconstanttime}");
 
-		long oneklineartime = 0;
-		long tenklineartime = 0;
-		long hundredklineartime = 0;
+		TimeSpan oneklineartime = new();
+		TimeSpan tenklineartime = new();
+		TimeSpan hundredklineartime = new();
 
 		sw.Start();
 		SumElements(onekarray);
 		sw.Stop();
-		oneklineartime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"1k Linear Elapsed Time {oneklineartime}ms");
+		oneklineartime = sw.Elapsed;
+		Console.WriteLine($"1k Linear Elapsed Time {oneklineartime}");
 
 		sw.Restart();
 		SumElements(tenkarray);
 		sw.Stop();
-		tenklineartime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"10k Linear Elapsed Time {tenklineartime}ms");
+		tenklineartime = sw.Elapsed;
+		Console.WriteLine($"10k Linear Elapsed Time {tenklineartime}");
 
 		sw.Restart();
 		SumElements(hundredkarray);
 		sw.Stop();
-		hundredklineartime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"100k Linear Elapsed Time {hundredklineartime}ms");
+		hundredklineartime = sw.Elapsed;
+		Console.WriteLine($"100k Linear Elapsed Time {hundredklineartime}");
 
-		long onekquadratictime = 0;
-		long tenkquadratictime = 0;
-		long hundredkquadratictime = 0;
+		TimeSpan onekquadratictime = new();
+		TimeSpan tenkquadratictime = new();
+		TimeSpan hundredkquadratictime = new();
 
 		sw.Start();
 		CrossSearchElements(onekarray);
 		sw.Stop();
-		onekquadratictime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"1k Quadratic Elapsed Time {onekquadratictime}ms");
+		onekquadratictime = sw.Elapsed;
+		Console.WriteLine($"1k Quadratic Elapsed Time {onekquadratictime}");
 
 		sw.Restart();
 		CrossSearchElements(tenkarray);
 		sw.Stop();
-		tenkquadratictime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"10k Quadratic Elapsed Time {tenkquadratictime}ms");
+		tenkquadratictime = sw.Elapsed;
+		Console.WriteLine($"10k Quadratic Elapsed Time {tenkquadratictime}");
 
 		sw.Restart();
 		CrossSearchElements(hundredkarray);
 		sw.Stop();
-		hundredkquadratictime = sw.ElapsedMilliseconds;
-		Console.WriteLine($"100k Quadratic Elapsed Time {hundredkquadratictime}ms");
+		hundredkquadratictime = sw.Elapsed;
+		Console.WriteLine($"100k Quadratic Elapsed Time {hundredkquadratictime}");
 
 		Console.WriteLine($"| Method | n=1,000 | n=10,000 | n=100,000 |\n" +
 $"|--------|---------|----------|-----------|\n" +
-$"| O(1)   | {onekconstanttime}ms | {tenkconstanttime}ms | {hundredkconstanttime}ms |\n" +
-$"| O(n)   | {oneklineartime}ms | {tenklineartime}ms | {hundredklineartime}ms |\n" +
-$"| O(n²)  | {onekquadratictime}ms | {tenkquadratictime}ms | {hundredkquadratictime}ms |");
+$"| O(1)   | {onekconstanttime} | {tenkconstanttime} | {hundredkconstanttime} |\n" +
+$"| O(n)   | {oneklineartime} | {tenklineartime} | {hundredklineartime} |\n" +
+$"| O(n²)  | {onekquadratictime} | {tenkquadratictime} | {hundredkquadratictime} |");
 	}
 
 	private static int FirstElement(int[] arr) => arr.First();
@@ -98,7 +96,7 @@ $"| O(n²)  | {onekquadratictime}ms | {tenkquadratictime}ms | {hundredkquadratic
 			for (int y = 0; y < arr.Length; y++)
 			{
 				combos++;
-				_ = $"{x}{y}";
+				_ = arr[x]+arr[y];
 			}
 		}
 
