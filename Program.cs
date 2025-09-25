@@ -76,8 +76,9 @@ internal class Program
 		hundredkquadratictime = sw.Elapsed;
 		Console.WriteLine($"100k Quadratic Elapsed Time {hundredkquadratictime}");
 
-		Console.WriteLine($"| Method | n=1,000 | n=10,000 | n=100,000 |\n" +
-$"|--------|---------|----------|-----------|\n" +
+		Console.WriteLine(
+$"| Method | n=1,000          | n=10,000         | n=100,000        |\n" +
+$"|        |                  |                  |                  |\n" +
 $"| O(1)   | {onekconstanttime} | {tenkconstanttime} | {hundredkconstanttime} |\n" +
 $"| O(n)   | {oneklineartime} | {tenklineartime} | {hundredklineartime} |\n" +
 $"| O(n²)  | {onekquadratictime} | {tenkquadratictime} | {hundredkquadratictime} |");
