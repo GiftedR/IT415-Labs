@@ -83,10 +83,28 @@ $"| O(n)   | {oneklineartime} | {tenklineartime} | {hundredklineartime} |\n" +
 $"| O(n²)  | {onekquadratictime} | {tenkquadratictime} | {hundredkquadratictime} |");
 	}
 
+/// <summary>
+/// Gives the first item of the input array.
+/// </summary>
+/// <param name="arr">Input Array</param>
+/// <returns>The First Item of the Array</returns>
+/// <complexity>Time: O(1) - Only ever does one operation. Space: O(1) - No Variables are used.</complexity>
 	private static int FirstElement(int[] arr) => arr.First();
 
+/// <summary>
+/// Adds the values if the input array.
+/// </summary>
+/// <param name="arr">Input Array</param>
+/// <returns>The total sum of the array</returns>
+/// <complexity>Time: O(n) - Adds only one additional operation per item added. Space: O(1) - Same amount of variables used regardless of size.</complexity>
 	private static int SumElements(int[] arr) => arr.Sum();
 
+/// <summary>
+/// Cross pairs the values if the input array without checking for duplicates.
+/// </summary>
+/// <param name="arr">Input Array</param>
+/// <returns>The total number of pairs within the array.</returns>
+/// <complexity>Time: O(n²) - Adds a substantial amount of operations with each new item. Space: O(1) - Only the combo variable is used, the addition is discarded.</complexity>
 	private static long CrossSearchElements(int[] arr)
 	{
 		long combos = 0;
