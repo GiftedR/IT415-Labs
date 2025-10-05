@@ -8,6 +8,7 @@ internal class Program
 	{
 		RunArraySample();
 		RunStringSample();
+		RunListSample();
 	}
 
 	public static void RunArraySample()
@@ -90,6 +91,41 @@ internal class Program
 			}
 			sb = new(string.Join(", ", oldstrings));
 			Console.WriteLine($"2C) Capitalized student names: {sb.ToString(0, Math.Min(sb.Length, 100))}...");
+		}
+	}
+
+	public static void RunListSample()
+	{
+		List<string> students = ["Bob Alec", "Kyle Barr", "Ronald Eksill"];
+		Console.WriteLine($"3) Original student string: {string.Join(", ", students)}");
+
+		// Adding to the end
+		{
+			students.Add("Bob Barker");
+			Console.WriteLine($"3A) After adding a student to the end: {string.Join(", ", students)}");
+		}
+
+		// Inserting into the middle
+		{
+			students.Insert(2, "Gabe Newell");
+			Console.WriteLine($"3B) After inserting a student at index 2: {string.Join(", ", students)}");
+		}
+
+		// Removing at the end
+		{
+			students.RemoveAt(students.Count - 1);
+			Console.WriteLine($"3C) After removing a student from the end: {string.Join(", ", students)}");
+		}
+
+		// Removing from the middle
+		{
+			students.RemoveAt(1);
+			Console.WriteLine($"3D) After removing a student from index 1: {string.Join(", ", students)}");
+		}
+
+		// Checking if a name exists
+		{
+			Console.WriteLine($"3E) Students {string.Join(", ", students)} contains Ronald Eksill: {students.Contains("Ronald Eksill")}");
 		}
 	}
 }
