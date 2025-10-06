@@ -10,6 +10,7 @@ internal class Program
 		RunStringSample();
 		RunListSample();
 		RunPerformanceSample();
+		RunPerformanceSample();
 	}
 
 	public static void RunArraySample()
