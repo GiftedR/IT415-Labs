@@ -9,6 +9,7 @@ internal class Program
 		RunArraySample();
 		RunStringSample();
 		RunListSample();
+		RunPerformanceSample();
 	}
 
 	public static void RunArraySample()
@@ -126,6 +127,60 @@ internal class Program
 		// Checking if a name exists
 		{
 			Console.WriteLine($"3E) Students {string.Join(", ", students)} contains Ronald Eksill: {students.Contains("Ronald Eksill")}");
+		}
+	}
+
+	public static void RunPerformanceSample()
+	{
+		const int itemCount = 1000000;
+		Stopwatch sw = new();
+		string[] array = new string[itemCount];
+		List<string> list;
+
+		for (int idx = 0; idx < itemCount; idx++)
+			array[idx] = "123456";
+
+		list = [.. array];
+
+		Console.WriteLine($"4) Starting with arrays and list of {itemCount} item(s)");
+		// Insert at array 0
+		{
+			sw.Start();
+			const int insertIndex = 0;
+			const string newItem = "654321";
+			Array.Resize(ref array, array.Length + 1);
+			for (int idx = array.Length - 1; idx > insertIndex; idx--)
+			{
+				array[idx] = array[idx - 1];
+			}
+			array[insertIndex] = newItem;
+			sw.Stop();
+			Console.WriteLine($"4A) Inserted into an array at index {insertIndex} for a total time of {sw.Elapsed}");
+		}
+
+		// Insert at list 0
+		{
+			sw.Restart();
+			list.Insert(0, "654321");
+			sw.Stop();
+			Console.WriteLine($"4B) Inserted into a list at index 0 for a total time of {sw.Elapsed}");
+		}
+
+		// Insert at array end
+		{
+			sw.Restart();
+			Array.Resize(ref array, array.Length + 1);
+			array[array.Length - 1] = "888888";
+			sw.Stop();
+			Console.WriteLine($"4C) Inserted into an array at index {array.Length - 1} for a total time of {sw.Elapsed}");
+		}
+
+		// Insert at list end
+		{
+			sw.Restart();
+			list.Insert(list.Count - 1, "888888");
+			sw.Stop();
+			Console.WriteLine($"4D) Inserted into an list at index {list.Count - 1} for a total time of {sw.Elapsed}");
 		}
 	}
 }
