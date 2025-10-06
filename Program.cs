@@ -22,14 +22,14 @@ internal class Program
 
 		// Accessing by index
 		{
-			Console.WriteLine($"1A) Accessing by Index 3, value: {studentIds[3]}");
+			Console.WriteLine($"1A) Accessing by Index 3, value: {studentIds[3]}. O(1) Time");
 		}
 
 		// Insert at middle by shifting
 		{
 			const int insertIndex = 2;
 			const int newStudentId = 57389;
-			Console.WriteLine($"1B) Insert new value {newStudentId} at index {insertIndex} by shifting.");
+			Console.WriteLine($"1B) Insert new value {newStudentId} at index {insertIndex} by shifting. O(n) Time");
 			for (int idx = studentIds.Length - 1; idx > insertIndex; idx--)
 			{
 				studentIds[idx] = studentIds[idx - 1];
@@ -41,7 +41,7 @@ internal class Program
 		// Delete at middle by shifting
 		{
 			const int deleteIndex = 1;
-			Console.WriteLine($"1C) Deleting value {studentIds[deleteIndex]} at index {deleteIndex} by shifting.");
+			Console.WriteLine($"1C) Deleting value {studentIds[deleteIndex]} at index {deleteIndex} by shifting. O(n) Time");
 			for (int idx = deleteIndex; idx < studentIds.Length - 1; idx++)
 			{
 				studentIds[idx] = studentIds[idx + 1];
@@ -66,7 +66,7 @@ internal class Program
 				students += $", student{idx}";
 			}
 			sw.Stop();
-			Console.WriteLine($"2A) Added {newStudentsCount} student(s) using native concatination for a total time of: {sw.Elapsed}");
+			Console.WriteLine($"2A) Added {newStudentsCount} student(s) using native concatination for a total time of: {sw.Elapsed}. O(n²) Time due to concatination");
 		}
 
 		sb = new(students);
@@ -79,7 +79,7 @@ internal class Program
 				sb.Append($", student{idx}");
 			}
 			sw.Stop();
-			Console.WriteLine($"2B) Added {newStudentsCount} student(s) using stringbuilder for a total time of: {sw.Elapsed}");
+			Console.WriteLine($"2B) Added {newStudentsCount} student(s) using stringbuilder for a total time of: {sw.Elapsed}. O(n) time");
 		}
 
 		//Formatting the string to be capital
@@ -94,7 +94,7 @@ internal class Program
 				}
 			}
 			sb = new(string.Join(", ", oldstrings));
-			Console.WriteLine($"2C) Capitalized student names: {sb.ToString(0, Math.Min(sb.Length, 100))}...");
+			Console.WriteLine($"2C) Capitalized student names: {sb.ToString(0, Math.Min(sb.Length, 100))}... O(n) Time");
 		}
 	}
 
@@ -106,30 +106,30 @@ internal class Program
 		// Adding to the end
 		{
 			students.Add("Bob Barker");
-			Console.WriteLine($"3A) After adding a student to the end: {string.Join(", ", students)}");
+			Console.WriteLine($"3A) After adding a student to the end: {string.Join(", ", students)}. O(n) Time");
 		}
 
 		// Inserting into the middle
 		{
 			students.Insert(2, "Gabe Newell");
-			Console.WriteLine($"3B) After inserting a student at index 2: {string.Join(", ", students)}");
+			Console.WriteLine($"3B) After inserting a student at index 2: {string.Join(", ", students)}. O(n) Time");
 		}
 
 		// Removing at the end
 		{
 			students.RemoveAt(students.Count - 1);
-			Console.WriteLine($"3C) After removing a student from the end: {string.Join(", ", students)}");
+			Console.WriteLine($"3C) After removing a student from the end: {string.Join(", ", students)}. O(n) Time");
 		}
 
 		// Removing from the middle
 		{
 			students.RemoveAt(1);
-			Console.WriteLine($"3D) After removing a student from index 1: {string.Join(", ", students)}");
+			Console.WriteLine($"3D) After removing a student from index 1: {string.Join(", ", students)}. O(n) Time");
 		}
 
 		// Checking if a name exists
 		{
-			Console.WriteLine($"3E) Students {string.Join(", ", students)} contains Ronald Eksill: {students.Contains("Ronald Eksill")}");
+			Console.WriteLine($"3E) Students {string.Join(", ", students)} contains Ronald Eksill: {students.Contains("Ronald Eksill")}. O(n) Time");
 		}
 	}
 
@@ -158,7 +158,7 @@ internal class Program
 			}
 			array[insertIndex] = newItem;
 			sw.Stop();
-			Console.WriteLine($"4A) Inserted into an array at index {insertIndex} for a total time of {sw.Elapsed}");
+			Console.WriteLine($"4A) Inserted into an array at index {insertIndex} for a total time of {sw.Elapsed}. O(n) Time");
 		}
 
 		// Insert at list 0
@@ -166,7 +166,7 @@ internal class Program
 			sw.Restart();
 			list.Insert(0, "654321");
 			sw.Stop();
-			Console.WriteLine($"4B) Inserted into a list at index 0 for a total time of {sw.Elapsed}");
+			Console.WriteLine($"4B) Inserted into a list at index 0 for a total time of {sw.Elapsed}. O(n) Time");
 		}
 
 		// Insert at array end
@@ -175,7 +175,7 @@ internal class Program
 			Array.Resize(ref array, array.Length + 1);
 			array[array.Length - 1] = "888888";
 			sw.Stop();
-			Console.WriteLine($"4C) Inserted into an array at index {array.Length - 1} for a total time of {sw.Elapsed}");
+			Console.WriteLine($"4C) Inserted into an array at index {array.Length - 1} for a total time of {sw.Elapsed}. O(1) Time | O(n) with resizing array");
 		}
 
 		// Insert at list end
@@ -183,7 +183,7 @@ internal class Program
 			sw.Restart();
 			list.Insert(list.Count - 1, "888888");
 			sw.Stop();
-			Console.WriteLine($"4D) Inserted into an list at index {list.Count - 1} for a total time of {sw.Elapsed}");
+			Console.WriteLine($"4D) Inserted into an list at index {list.Count - 1} for a total time of {sw.Elapsed}. O(n) Time");
 		}
 	}
 }
