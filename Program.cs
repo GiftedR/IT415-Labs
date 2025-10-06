@@ -7,9 +7,11 @@ internal class Program
 	private static void Main(string[] args)
 	{
 		RunArraySample();
+		Console.WriteLine();
 		RunStringSample();
+		Console.WriteLine();
 		RunListSample();
-		RunPerformanceSample();
+		Console.WriteLine();
 		RunPerformanceSample();
 	}
 
