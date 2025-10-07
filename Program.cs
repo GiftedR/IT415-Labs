@@ -78,6 +78,56 @@ public class Program
 
 		}
 		#endregion
+
+		Console.WriteLine();
+
+		#region Performance
+		{
+			const int itemCount = 100_000;
+			Console.WriteLine($"3) Starting Stack vs Queue Performance with {itemCount} items.");
+			Queue<int> perfQueue = new();
+			Stack<int> perfStack = new();
+			Stopwatch sw = new();
+			TimeSpan queueTime = new();
+			TimeSpan stackTime = new();
+
+			sw.Start();
+			for (int idx = 0; idx < itemCount; idx++)
+				perfQueue.Enqueue(idx);
+			sw.Stop();
+
+			Console.WriteLine($"3A) {itemCount}x Enqueue Time: {sw.Elapsed}");
+			queueTime += sw.Elapsed;
+
+			sw.Restart();
+			for (int idx = 0; idx < itemCount; idx++)
+				perfQueue.Dequeue();
+			sw.Stop();
+
+			Console.WriteLine($"3B) {itemCount}x Dequeue Time: {sw.Elapsed}");
+			queueTime += sw.Elapsed;
+			Console.WriteLine($"3C) {itemCount * 2}x Total Queue Time: {queueTime}");
+
+			sw.Restart();
+			for (int idx = 0; idx < itemCount; idx++)
+				perfStack.Push(idx);
+			sw.Stop();
+
+			Console.WriteLine($"3D) {itemCount}x Stack Push Time: {sw.Elapsed}");
+			stackTime += sw.Elapsed;
+
+			sw.Restart();
+			for (int idx = 0; idx < itemCount; idx++)
+				perfStack.Pop();
+			sw.Stop();
+
+			Console.WriteLine($"3E) {itemCount}x Stack Pop Time: {sw.Elapsed}");
+			stackTime += sw.Elapsed;
+			Console.WriteLine($"3F) {itemCount * 2}x Total Stack Time: {stackTime}");
+			Console.WriteLine($"\n3G) These tests show that the {(stackTime == queueTime ? "stack and queue are the same" : (stackTime < queueTime ? "stack is faster" : "queue is faster"))}.\n\tStack: {stackTime}\n\tQueue: {queueTime}");
+
+		}
+		#endregion
 	}
 
 }
