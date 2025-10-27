@@ -10,7 +10,7 @@
 			tree.Insert(n);
 		}
 
-		int[] searchValue = { 7, 11 };
+		int[] searchValue = { 7, 11, 82 };
 		foreach (int n in searchValue)
 		{
 			Console.WriteLine($"Looking for value: {n}, Found: {tree.Search(n)}");
