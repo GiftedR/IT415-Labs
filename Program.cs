@@ -1,13 +1,20 @@
-﻿using System.Numerics;
+﻿using System.Text;
 
 internal class Program
 {
 	private static void Main(string[] args)
 	{
 		BST bst = BuildSkewed();
+		Console.WriteLine("Tree Before:");
 		bst.PrintTree(bst.Root);
 		RotateLeft(ref bst);
+		Console.WriteLine("\nTree After Rotating:");
 		bst.PrintTree(bst.Root);
+
+		int[] hp = { 4, 10, 3, 5, 1 };
+		Console.WriteLine("Starting: [ 4, 10, 3, 5, 1 ]");
+		Heapify(hp);
+		Console.WriteLine($"Heaped: [{StrArray(hp)} ]");
 	}
 
 	private static BST BuildSkewed()
@@ -27,7 +34,23 @@ internal class Program
 		bst.Root.Left = bst.Root.Right;
 		bst.Root.Right = bst.Root.Left.Right;
 		bst.Root.Left.Right = null;
+
+	}
+
+	private static void Heapify(int[] arr)
+	{
 		
+	}
+	
+	private static string StrArray(int[] arr)
+	{
+		StringBuilder sb = new();
+
+		foreach (int i in arr)
+			sb.Append($" {i},");
+
+		sb.Remove(sb.Length - 1, 1);
+		return sb.ToString();
 	}
 }
 
