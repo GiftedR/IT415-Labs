@@ -1,5 +1,9 @@
 ﻿using System.Text;
 
+/// <summary>
+/// Reflection: 
+/// </summary>
+
 internal class Program
 {
 	private static void Main(string[] args)
@@ -39,9 +43,35 @@ internal class Program
 
 	private static void Heapify(int[] arr)
 	{
-		
+		int length = arr.Length;
+
+		for (int idx = length / 2 - 1; idx >= 0; idx--)
+			RecursiveHeapify(arr, idx, length);
 	}
-	
+
+	private static void RecursiveHeapify(int[] arr, int index, int number)
+	{
+		int smallest = index;
+		int left = 2 * index + 1;
+		int right = 2 * index + 2;
+
+		if (left < number && arr[left] < arr[smallest])
+			smallest = left;
+
+		if (right < number && arr[right] < arr[smallest])
+			smallest = right;
+		
+		if (smallest != index)
+		{
+			int tmp = arr[index];
+
+			arr[index] = arr[smallest];
+			arr[smallest] = tmp;
+
+			RecursiveHeapify(arr, smallest, number);
+		}
+	}
+
 	private static string StrArray(int[] arr)
 	{
 		StringBuilder sb = new();
