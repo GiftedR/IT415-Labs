@@ -2,6 +2,13 @@
 
 /// <summary>
 /// Reflection: 
+/// Rotation cause the nodes within the tree to swap positions to create a more balanced tree. It allows for a faster search of the smallest and the biggest values. It can also allow for quick access for features of the tree like height and depth.
+// 
+// Heapify ensures the array is in a format that would generate a valid heap for use with all the standard heap actions. In this case it corrects it to a min-heap. It can also set it up to be a max heap which has its own use cases.
+// 
+// In terms of AVL it allows for quicker searching of certain values, Where a tree can have a million items, but only need to run the action a few times to determine of an item is contained in the tree. It also takes the same amount of operations to remove an item from the tree due to how quickly it can be found.
+// 
+// With a priority Queue, it can be used to make sure that more required actions happen first. This is most commonly used with systems and tasks to make sure that the kernel and lower level processes run before the higher ones so they can be set up for them to use. This makes operating systems more stable.
 /// </summary>
 
 internal class Program
