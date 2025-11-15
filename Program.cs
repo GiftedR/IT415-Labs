@@ -52,7 +52,8 @@ public class HashTable
 		
 		if (!_hashBuckets[idx].Contains(hashKey))
 		{
-			// _hashBuckets[idx] = new List<int>();
+			// The only thing I changed was setting it to add rather than create a new list.
+			// _hashBuckets[idx] = new List<int>(); // Fixed it by commenting out this line
 			_hashBuckets[idx].Add(hashKey);
 		}
 	}
