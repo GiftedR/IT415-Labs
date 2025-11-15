@@ -19,6 +19,20 @@ internal class Program
 		Console.WriteLine($"Contains Value 5: {ht.Contains(5)}");
 		
 		Console.WriteLine($"Final HashTable: \n{ht}");
+		
+		HashTable ht5 = new(5);
+
+		Console.WriteLine("Inserting 3 values, 12, 22, 37");
+
+		ht5.Insert(12);
+		ht5.Insert(22);
+		ht5.Insert(37);
+
+		Console.WriteLine($"Contains Value 12: {ht5.Contains(12)}");
+		Console.WriteLine($"Contains Value 22: {ht5.Contains(22)}");
+		Console.WriteLine($"Contains Value 37: {ht5.Contains(37)}");
+		
+		Console.WriteLine($"Final HashTable: \n{ht5}");
 	}
 }
 
