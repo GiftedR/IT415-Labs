@@ -6,12 +6,19 @@ internal class Program
 	{
 		HashTable ht = new(3);
 
+		Console.WriteLine("Inserting 4 values, 12, 22, 37, 5");
+
 		ht.Insert(12);
 		ht.Insert(22);
 		ht.Insert(37);
 		ht.Insert(5);
 
-		Console.WriteLine(ht);
+		Console.WriteLine($"Contains Value 12: {ht.Contains(12)}");
+		Console.WriteLine($"Contains Value 22: {ht.Contains(22)}");
+		Console.WriteLine($"Contains Value 37: {ht.Contains(37)}");
+		Console.WriteLine($"Contains Value 5: {ht.Contains(5)}");
+		
+		Console.WriteLine($"Final HashTable: \n{ht}");
 	}
 }
 
