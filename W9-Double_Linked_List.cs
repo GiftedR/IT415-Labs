@@ -1,5 +1,11 @@
 ﻿using System.Text;
 
+//Doubly linked list improve limitations because they make it less likely for items to get lost, as there are two pointers referencing the list. One for the head, and one for the tail. 
+// 
+// However, this security does come at a cost. When performing operations like inserting and deleting, you have to handle two separate pointers for each operation rather than the singular. This also has the upside of allowing two pointers when searching for values. Where you can define a pointer starting from the head, and a pointer starting from the tail. This cuts the search time in half from what it would originally be O(n/2) compared to the default O(n).
+// 
+// An example that might use this would be the steps in an compiler. Where when one object and/or operation fails, you can step that back and reattempt the operation, or find a replacement operation. Much like a fallback system.
+
 internal class Program
 {
 	private static void Main(string[] args)
