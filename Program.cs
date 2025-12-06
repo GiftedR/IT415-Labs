@@ -1,5 +1,7 @@
 ﻿using System.Text;
 
+// Note to reader: Complexity documentation only applys to one call of the function. So recursive functions are O(1), but overall are O(n) when called.
+
 internal class Program
 {
 	private static void Main(string[] args)
@@ -41,10 +43,25 @@ internal class Program
 		return sb.ToString();
 	}
 }
+
+/// <summary>
+/// Binary Tree data structure.
+/// </summary>
 public class Tree
 {
 	public TreeNode? Root { get; set; }
 
+	/// <summary>
+	/// Traverses the tree in order and adds them to a list
+	/// </summary>
+	/// <param name="node">The starting node</param>
+	/// <param name="output">The list that gets added to.</param>
+	/// <remarks>
+	/// 	<complexity>
+	/// 		Time: O(1) - Recursion, method itself is only used once.
+	/// 		Space: O(1) - Creates no additional variables.
+	/// 	</complexity>
+	/// </remarks>
 	public static void InOrder(TreeNode node, ref List<TreeNode> output)
 	{
 		if (node.Left != null)
@@ -53,6 +70,18 @@ public class Tree
 		if (node.Right != null)
 			InOrder(node.Right, ref output);
 	}
+
+	/// <summary>
+	/// Traverses the tree in pre order and adds them to a list
+	/// </summary>
+	/// <param name="node">The starting node</param>
+	/// <param name="output">The list that gets added to.</param>
+	/// <remarks>
+	/// 	<complexity>
+	/// 		Time: O(1) - Recursion, method itself is only used once.
+	/// 		Space: O(1) - Creates no additional variables.
+	/// 	</complexity>
+	/// </remarks>
 	public static void PreOrder(TreeNode node, ref List<TreeNode> output)
 	{
 		output.Add(node);
@@ -61,6 +90,18 @@ public class Tree
 		if (node.Right != null)
 			PreOrder(node.Right, ref output);
 	}
+
+	/// <summary>
+	/// Traverses the tree in post order and adds them to a list
+	/// </summary>
+	/// <param name="node">The starting node</param>
+	/// <param name="output">The list that gets added too.</param>
+	/// <remarks>
+	/// 	<complexity>
+	/// 		Time: O(1) - Recursion, method itself is only used once.
+	/// 		Space: O(1) - Creates no additional variables.
+	/// 	</complexity>
+	/// </remarks>
 	public static void PostOrder(TreeNode node, ref List<TreeNode> output)
 	{
 		if (node.Left != null)
@@ -70,6 +111,17 @@ public class Tree
 		output.Add(node);
 	}
 
+	/// <summary>
+	/// Gets the hight of the tree.
+	/// </summary>
+	/// <param name="node">The starting point.</param>
+	/// <returns>The height.</returns>
+	/// <remarks>
+	/// 	<complexity>
+	/// 		Time: O(1) - Recursion, method itself is only used once.
+	/// 		Space: O(1) - Only uses left and right variable regardless of size.
+	/// 	</complexity>
+	/// </remarks>
 	public static int GetHeight(TreeNode node)
 	{
 		if (node == null)
@@ -79,6 +131,18 @@ public class Tree
 		return 1 + Math.Max(leftHeight, rightHeight);
 	}
 
+	/// <summary>
+	/// Gets the depth of the specified node.
+	/// </summary>
+	/// <param name="node">THe starting node.</param>
+	/// <param name="target">The item to look for.</param>
+	/// <returns>The depth of the item.</returns>
+	/// <remarks>
+	/// 	<complexity>
+	/// 		Time: O(1) - Recusion, method itself is only used once.
+	/// 		Space: O(1) - Only uses 2 variables regardless of size.
+	/// 	</complexity>
+	/// </remarks>
 	public static int GetDepth(TreeNode? node, int target)
 	{
 		if (node == null)
@@ -94,6 +158,16 @@ public class Tree
 		return -1;
 	}
 
+	/// <summary>
+	/// Creates a sample tree for use with traversals, depth and height.
+	/// </summary>
+	/// <returns>Sample Tree</returns>
+	/// <remarks>
+	/// 	<complexity>
+	/// 		Time: O(1) - Only makes a new object.
+	/// 		Space: O(1) - Only called once.
+	/// 	</complexity>
+	/// </remarks>
 	public static Tree CreateTeachingTree() => new Tree
 	{
 		Root = new TreeNode(38)
@@ -106,6 +180,18 @@ public class Tree
 			Right = new TreeNode(43)
 		}
 	};
+	/// <summary>
+	/// Prints the tree.
+	/// </summary>
+	/// <param name="node">The starting point.</param>
+	/// <param name="indent">The indent character.</param>
+	/// <param name="isLeft">Is left by default.</param>
+	/// <remarks>
+	/// 	<complexity>
+	/// 		Time: O(1) - Recursive, method only called once.
+	/// 		Space: O(1) - Creates no variables.
+	/// 	</complexity>
+	/// </remarks>
 	public void PrintTree(TreeNode? node, string indent = "", bool isLeft = true)
 	{
 		if (node == null) return;
@@ -116,6 +202,9 @@ public class Tree
 	}
 }
 
+/// <summary>
+/// A node contained in the tree.
+/// </summary>
 public class TreeNode
 {
 	public int Data { get; set; }
