@@ -207,8 +207,17 @@ public class Tree
 /// </summary>
 public class TreeNode
 {
+	/// <summary>
+	/// Data contained in the node.
+	/// </summary>
 	public int Data { get; set; }
+	/// <summary>
+	/// Node to the left of this one.
+	/// </summary>
 	public TreeNode? Left { get; set; }
+	/// <summary>
+	/// Node to the right of this one.
+	/// </summary>
 	public TreeNode? Right { get; set; }
 
 	public TreeNode(int data) => Data = data;
